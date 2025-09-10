@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="pt_BR">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <title>Usuários</title>
@@ -17,8 +17,13 @@
 </head>
 <body>
     <h1>Usuários</h1>
+    @if (session('success'))
+        <div style="background:#e8ffe8;border:1px solid #b7e2b7;padding:8px;margin-bottom:12px;border-radius:6px;">
+            {{ session('success') }}
+        </div>
+    @endif
 
-    <p><a href="{{route('users.create')}}}">+ Novo Usuário</a></p>
+    <p><a href="{{route('users.create')}}">+ Novo Usuário</a></p>
 
     <table>
         <thead>
@@ -38,8 +43,8 @@
                     <td>{{ $user->email }}</td>
                     <td>{{ $user->created_at->format('d/m/Y H:i') }}</td>
                     <td>
-                        <a href="{{ route('users.show', $user) }}}">Ver</a>
-                        <a href="{{ route('users.edit') , $user->id}}">Editar</a>
+                        <a href="{{ route('users.show', $user) }}">Ver</a>
+                        <a href="{{ route('users.edit' , $user) }}">Editar</a>
                     </td>
                 </tr>
             @empty
